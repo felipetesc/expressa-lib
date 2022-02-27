@@ -1,8 +1,7 @@
 import os from "https://deno.land/x/dos@v0.11.0/mod.ts";
 import { serve } from "https://deno.land/std@0.125.0/http/server.ts";
 import { parse, format } from "https://deno.land/std@0.126.0/datetime/mod.ts";
-import { ExpressaApp  } from "../handlers/handlers.ts";
-import { ErrorHandler } from "../handlers/err.ts";
+import { ExpressaApp , DefaultErrHandler } from "../handlers/handlers.ts";
 
 function CreateServer(port : number) : Deno.Listener{
   const PORT = port;
@@ -14,7 +13,7 @@ function CreateServer(port : number) : Deno.Listener{
 }
 
 async function RunApp(port : number, routes : ExpressaApp){
-    const errHandler = new ErrorHandler();
+    const errHandler = new DefaultErrHandler();
     
     const server = CreateServer(port);
   

@@ -1,4 +1,4 @@
-import { AppConfigs, DatabaseConfigs } from "../configs/defaults.ts";
+import { AppConfigs, DatabaseConfigs } from "../utils/defaults.ts";
 
 interface IDatabase{
     connect(dbconfig : DatabaseConfigs) : any;
