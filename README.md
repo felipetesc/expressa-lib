@@ -6,7 +6,7 @@ To use this micro lib you can import from github, like so:
 
 Installation:
 ```typescript
-  import { Handler, AppContext, AppConfigs, Expressa } from "https://raw.githubusercontent.com/felipetesc/expressa/v0.0.4/mod.ts";
+  import { Handler, AppContext, AppConfigs, Expressa } from "https://raw.githubusercontent.com/felipetesc/expressa/v0.0.5/mod.ts";
 ```
 
 ## Quick start:
