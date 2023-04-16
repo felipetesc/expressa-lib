@@ -9,12 +9,12 @@ interface IHandlerFactory{
 
 
 function HandlerFn(request: Request): Response{
-  return new Response("", { status: 20 });
+  return new Response("", { status: 200 });
 }
 
 class Handler implements IHandlerFactory{
   handlerFn(request: Request): Response{
-    return new Response("", { status: 20 });
+    return new Response("", { status: 200 });
   }
 }
 class DefaultErrHandler extends Handler{
