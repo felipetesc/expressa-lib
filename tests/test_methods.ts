@@ -1,111 +1,82 @@
-import { Expressa, AppConfigs, GetHandler , Post, Delete, Put, Head, Patch, Options, Connect, Trace, DefaultErrHandler, AppContext } from "../mod.ts";
+import { Expressa, AppConfigs, AppContext, Handler } from "../mod.ts";
 
-class Get_HandlerTest extends GetHandler{
+class Get_HandlerTest extends Handler{
     
-  handler(request: Request): Response {
+  handlerFn(request: Request): Response {
       
       return new Response(request.method.toString(), { status: 200 });
   }
 }
-class Post_HandlerTest extends Post{
+class Post_HandlerTest extends Handler{
     
-    handler(request: Request): Response {
+  handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Put_HandlerTest extends Put {
+  class Put_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Head_HandlerTest extends Head{
+  class Head_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Delete_HandlerTest extends Delete {
+  class Delete_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Patch_HandlerTest extends Patch{
+  class Patch_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Options_HandlerTest extends Options {
+  class Options_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Connect_HandlerTest extends Connect {
+  class Connect_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-  class Trace_HandlerTest extends Connect {
+  class Trace_HandlerTest extends Handler {
     
-    handler(request: Request): Response {
+    handlerFn(request: Request): Response {
         
-        let current_method = request.method;
-        
-        let body = current_method.toString();
-        
-        return new Response(body, { status: 200 });
+        return new Response(request.method.toString(), { status: 200 });
       }
   }
-let confs = new AppConfigs();
-confs.port = 3000;
+const configs = new AppConfigs();
+configs.port = 3000;
 
 const appCtx = new AppContext();
-appCtx.addRouteHandler("/", new Get_HandlerTest());
-appCtx.addRouteHandler("/", new Post_HandlerTest());
-appCtx.addRouteHandler("/", new Put_HandlerTest());
-appCtx.addRouteHandler("/", new Delete_HandlerTest());
-appCtx.addRouteHandler("/", new Head_HandlerTest());
-appCtx.addRouteHandler("/", new Patch_HandlerTest());
-appCtx.addRouteHandler("/", new Options_HandlerTest());
-appCtx.addRouteHandler("/", new Connect_HandlerTest());
-appCtx.addRouteHandler("/", new Trace_HandlerTest());
-Expressa.run(confs, appCtx);
+
+appCtx.addRouteHandler("get", "/", new Get_HandlerTest());
+appCtx.addRouteHandler("post", "/", new Post_HandlerTest());
+appCtx.addRouteHandler("put", "/", new Put_HandlerTest());
+appCtx.addRouteHandler("delete","/", new Delete_HandlerTest());
+appCtx.addRouteHandler("head","/", new Head_HandlerTest());
+appCtx.addRouteHandler("patch","/", new Patch_HandlerTest());
+appCtx.addRouteHandler("options","/", new Options_HandlerTest());
+appCtx.addRouteHandler("connect","/", new Connect_HandlerTest());
+appCtx.addRouteHandler("trace","/", new Trace_HandlerTest());
+
+Expressa.run(configs, appCtx);
+

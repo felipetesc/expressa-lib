@@ -1,11 +1,11 @@
 import os from "https://deno.land/x/dos@v0.11.0/mod.ts";
-import {existsSync } from "https://deno.land/std/fs/mod.ts";
+import { existsSync } from "https://deno.land/std@0.183.0/fs/mod.ts";
 
 class AssetsBufferizer{
   
   static getDataFromRelPath(relPath : string) : Uint8Array {
-    let curDir = Deno.cwd();
-    let isWindows = os.platform() == "windows" ? true : false;
+    const curDir = Deno.cwd();
+    const isWindows = os.platform() == "windows" ? true : false;
     let path = "";
     if(isWindows){
       path = curDir + "\\" + relPath.replaceAll("/", "\\");
@@ -26,7 +26,7 @@ class BlankFavicon{
   static bufferizedIcon() : Uint8Array{
     let exePath = Deno.cwd();
     let partial_str = "/expressa-app/assets/favicon.ico";
-    let isWindows = os.platform() == "windows" ? true : false;
+    const isWindows = os.platform() == "windows" ? true : false;
     
     if(isWindows){
       partial_str = partial_str.replaceAll("\\", "/");

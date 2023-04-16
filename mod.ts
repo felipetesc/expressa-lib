@@ -1,15 +1,15 @@
-import { AppConfigs, DatabaseConfigs } from "./utils/configs.ts";
+import { AppConfigs, AppConfigDefaults, DatabaseConfigs } from "./utils/configs.ts";
 import { AssetsBufferizer, BlankFavicon} from "./utils/data.ts";
-import { IHandler, IRoute, Handler, GetHandler, Post, Delete, Put, Head, Patch, Options, Connect, Trace, DefaultErrHandler, AppContext } from "./handlers/handlers.ts";
+import { IHandlerFactory, Handler, DefaultErrHandler, FaviconHandler, HttpMethod,  Url, AppContext, SharedState } from "./handlers/handlers.ts";
 import { ServerBuilder, RunForever, Expressa } from "./runner/runner.ts";
 import { Database, DBConn } from "./database/database.ts";
 
-export type {IHandler,IRoute, DBConn};
+export type {DBConn, IHandlerFactory, HttpMethod, Url, SharedState};
 
 export {
-    AppConfigs, DatabaseConfigs,
+    AppConfigs, AppConfigDefaults, DatabaseConfigs,
     AssetsBufferizer, BlankFavicon,
-    Handler, GetHandler, Post, Delete, Put, Head, Patch, Options, Connect, Trace, DefaultErrHandler, AppContext,
-    ServerBuilder, RunForever, Expressa,
+    Handler, DefaultErrHandler,FaviconHandler,
+    AppContext, ServerBuilder, RunForever, Expressa,
     Database
 };
